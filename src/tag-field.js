@@ -10,6 +10,7 @@ createCustomElement('x-saw-tag-field', {
 	view,
 	initialState: {
 		tooltip: null,
+		inputElement: null,
 		active: false,
 	},
 	properties: {
@@ -21,6 +22,15 @@ createCustomElement('x-saw-tag-field', {
 		},
 		inputValue: {
 			default: null,
+		},
+		placeholder: {
+			default: 'Enter tags...',
+		},
+		onChange: {
+			default: (tags) => { console.log(tags) },
+		},
+		isDisabled: {
+			default: false,
 		},
 	},
 	styles,

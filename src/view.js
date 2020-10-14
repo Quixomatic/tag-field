@@ -1,7 +1,8 @@
 import tippy from 'tippy.js';
 
-import { getTagIcon } from './utils/getTagIcon';
+import { getIcon } from './utils/getIcon';
 import { getTooltipTarget } from './utils/getTooltipTarget';
+import { faTag } from './svg/faTag';
 
 import './components/tag-item';
 
@@ -9,8 +10,8 @@ export default (state, { updateProperties, dispatch }) => {
 	//┌─────────────────────────────────────────────────────────────
 	//! Scoped Constants
 	//└─────────────────────────────────────────────────────────────
-	const { tooltip, active } = state;
-	const { componentId, tags, inputValue } = state.properties;
+	const { active } = state;
+	const { componentId, tags, placeholder, isDisabled } = state.properties;
 
 	const handleInitPopover = (vnode) => {
 		const targetClass = 'field-popover';
@@ -34,34 +35,55 @@ export default (state, { updateProperties, dispatch }) => {
 		dispatch('SET_TOOLTIP', tooltip);
 	};
 
+	const handleInitInput = (vnode) => {
+		const { elm: inputElement } = vnode;
+
+		dispatch('SET_INPUT_ELEMENT', { inputElement });
+	};
+
 	const togglePopover = (val) => {
 		dispatch('TOGGLE_TOOLTIP', { val });
 	};
 
-	const handleKeyPressed = (e) => {
+	const handleKeyUp = (e) => {
 		const { which, target } = e;
 		const { textContent } = target;
-		const value = textContent.replace(',', '');
-
+		const value = textContent.replace(',', '').trim();
 		const whitelist = [13, 44, 188];
 
-		if (whitelist.indexOf(which) === -1) {
+		if (whitelist.indexOf(which) === -1 || !value || value === '') {
 			return;
 		}
 
 		dispatch('ADD_TAG', { value });
 	};
 
+	const handleKeyDown = (e) => {
+		const { which } = e;
+		const blacklist = [13, 44, 188];
+
+		if (blacklist.indexOf(which) !== -1) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+	};
+
 	return (
-		<div className="tag-field" id={componentId} hook-insert={handleInitPopover}>
+		<div className="tag-field" id={componentId} hook-insert={handleInitPopover} disabled={isDisabled}>
 			<div className="field-icon" class-active={active} on-click={togglePopover}>
-				{getTagIcon()}
+				{getIcon(faTag)}
 			</div>
 			<div className="field-popover">
 				{tags.map((item, idx) => (
 					<x-saw-tag-item item={item} key={`${item}_${idx}`} />
 				))}
-				<span contentEditable={true} on-keyup={handleKeyPressed} textContent={inputValue}></span>
+				<span
+					contentEditable={true}
+					on-keydown={handleKeyDown}
+					on-keyup={handleKeyUp}
+					hook-insert={handleInitInput}
+					attr-data-after={placeholder}
+				></span>
 			</div>
 		</div>
 	);

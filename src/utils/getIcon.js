@@ -1,11 +1,20 @@
 import snabbdom, { Fragment } from '@servicenow/ui-renderer-snabbdom';
-import { faTag } from '../faTag';
 
 const { createElementFromNode } = snabbdom;
 
-export const getTagIcon = () => {
+const BASE_FONT_SIZE = 16;
+const ICON_SIZES = {
+	sm: 12,
+	md: 16,
+	lg: 24,
+	xl: 32,
+};
+
+export const getIcon = (iconDef, size = 'md') => {
 	const wrapper = document.createElement('SPAN');
-	const def = { ...faTag };
+	const iconSize = ICON_SIZES[size];
+	const iconRems = iconSize / BASE_FONT_SIZE;
+	const def = { ...iconDef };
 
 	if (!def) {
 		return null;
@@ -25,7 +34,7 @@ export const getTagIcon = () => {
 			xmlns="http://www.w3.org/2000/svg"
 			aria-hidden="true"
 			viewBox="${viewBox}"
-			style="width: 1rem; height: 1rem; fill: currentColor;">
+			style="width: ${iconRems}rem; height: ${iconRems}rem; fill: currentColor;">
 				${svgPath}
 			</svg>
 		`;

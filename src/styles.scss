@@ -12,6 +12,12 @@
 
 	& > .tag-field {
 		display: inline-flex;
+		transition: opacity 0.15s ease-in-out;
+
+		&[disabled] {
+			opacity: 0.5;
+			pointer-events: none;
+		}
 
 		& > .field-icon {
 			display: flex;
@@ -29,7 +35,7 @@
 
 			&.active,
 			&:hover {
-				@include preset-shadow(1);
+				@include preset-shadow(2);
 			}
 		}
 
@@ -47,7 +53,24 @@
 
 			& > span {
 				flex: 1 1 auto;
-				min-width: 100px;
+				min-width: 65px;
+				min-height: $itemHeight * 0.75;
+				line-height: $itemHeight * 0.75;
+				white-space: pre-wrap;
+				display: inline-block;
+				font-size: 12px;
+
+				&:focus {
+					outline: none;
+				}
+
+				&:empty {
+					&:after {
+						content: attr(data-after);
+						color: #999999;
+						pointer-events: none;
+					}
+				}
 			}
 		}
 	}
