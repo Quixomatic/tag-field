@@ -1,0 +1,77 @@
+@import '@servicenow/sass-kit/host';
+@import './css/vars';
+@import '~tippy.js/dist/tippy.css';
+@import '~tippy.js/themes/light-border.css';
+
+:host {
+	display: inline-flex;
+	font-size: $now-global-font-size--md;
+	color: inherit;
+	fill: currentColor;
+	stroke: currentColor;
+
+	& > .tag-field {
+		display: inline-flex;
+		transition: opacity 0.15s ease-in-out;
+
+		&[disabled] {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+
+		& > .field-icon {
+			display: flex;
+			flex-flow: column nowrap;
+			align-items: center;
+			justify-content: center;
+			height: $itemHeight * 0.75;
+			width: $itemHeight * 0.75;
+			border: 1px solid transparent;
+			border-radius: 4px;
+
+			@include background-hover($swHighlightBlue, true);
+
+			transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+			&.active,
+			&:hover {
+				@include preset-shadow(2);
+			}
+		}
+
+		.field-popover {
+			margin: -5px -9px;
+			padding: 5px;
+			display: flex;
+			flex-flow: row wrap;
+			max-width: 280px;
+
+			& > x-saw-tag-item {
+				flex: 0 0 auto;
+				margin-right: 5px;
+			}
+
+			& > span {
+				flex: 1 1 auto;
+				min-width: 65px;
+				min-height: $itemHeight * 0.75;
+				line-height: $itemHeight * 0.75;
+				white-space: pre-wrap;
+				display: inline-block;
+				font-size: 12px;
+
+				&:focus {
+					outline: none;
+				}
+
+				&:empty {
+					&:after {
+						content: attr(data-after);
+						color: #999999;
+						pointer-events: none;
+					}
+				}
+			}
+		}
+	}
+}
