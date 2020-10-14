@@ -3,13 +3,16 @@ import tippy from 'tippy.js';
 import { getTagIcon } from './utils/getTagIcon';
 import { getTooltipTarget } from './utils/getTooltipTarget';
 
+import './components/tag-item';
+
 export default (state, { updateProperties, dispatch }) => {
 	//┌─────────────────────────────────────────────────────────────
 	//! Scoped Constants
 	//└─────────────────────────────────────────────────────────────
-	const { componentId } = state.properties;
+	const { tooltip, active } = state;
+	const { componentId, tags, inputValue } = state.properties;
 
-	const handleInit = (vnode) => {
+	const handleInitPopover = (vnode) => {
 		const targetClass = 'field-popover';
 		const content = getTooltipTarget(vnode, targetClass);
 
@@ -17,10 +20,9 @@ export default (state, { updateProperties, dispatch }) => {
 			content: content,
 			appendTo: vnode.elm,
 			theme: 'light-border',
-			placement: 'right',
+			placement: 'top',
 			trigger: 'manual',
 			interactive: true,
-			arrow: false,
 			allowHTML: true,
 			hideOnClick: false,
 			maxWidth: 'none',
@@ -36,11 +38,30 @@ export default (state, { updateProperties, dispatch }) => {
 		dispatch('TOGGLE_TOOLTIP', { val });
 	};
 
+	const handleKeyPressed = (e) => {
+		const { which, target } = e;
+		const { textContent } = target;
+		const value = textContent.replace(',', '');
+
+		const whitelist = [13, 44, 188];
+
+		if (whitelist.indexOf(which) === -1) {
+			return;
+		}
+
+		dispatch('ADD_TAG', { value });
+	};
+
 	return (
-		<div className="tag-field" id={componentId} hook-insert={handleInit}>
-			<div className="field-icon" on-click={togglePopover}>{getTagIcon()}</div>
+		<div className="tag-field" id={componentId} hook-insert={handleInitPopover}>
+			<div className="field-icon" class-active={active} on-click={togglePopover}>
+				{getTagIcon()}
+			</div>
 			<div className="field-popover">
-				Test
+				{tags.map((item, idx) => (
+					<x-saw-tag-item item={item} key={`${item}_${idx}`} />
+				))}
+				<span contentEditable={true} on-keyup={handleKeyPressed} textContent={inputValue}></span>
 			</div>
 		</div>
 	);
