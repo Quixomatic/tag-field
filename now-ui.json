@@ -1,0 +1,8 @@
+{
+	"components": {
+		"x-saw-tag-field": {
+			"innerComponents": []
+		}
+	},
+	"scopeName": "x_saw_tag_field"
+}

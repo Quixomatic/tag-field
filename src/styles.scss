@@ -1,0 +1,32 @@
+@import '@servicenow/sass-kit/host';
+@import './css/vars';
+@import '~tippy.js/dist/tippy.css';
+@import '~tippy.js/themes/light-border.css';
+
+:host {
+	display: inline-flex;
+	font-size: $now-global-font-size--md;
+	color: inherit;
+	fill: currentColor;
+	stroke: currentColor;
+
+	& > .tag-field {
+		display: inline-flex;
+
+		& > .field-icon {
+			display: flex;
+			flex-flow: column nowrap;
+			align-items: center;
+			justify-content: center;
+			height: $itemHeight * 0.75;
+			width: $itemHeight * 0.75;
+
+			@include background-hover();
+		}
+
+		.field-popover {
+			margin: -5px -9px;
+			padding: 10px;
+		}
+	}
+}
