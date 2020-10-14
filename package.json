@@ -1,6 +1,6 @@
 {
-  "name": "@nowcomponents/tag-field",
-  "version": "0.0.1",
+  "name": "@saleswon/tag-field",
+  "version": "0.3.2",
   "description": "A ServiceNow custom component to add or remove tags",
   "main": "index.js",
   "dependencies": {
@@ -29,17 +29,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NowComponents/tag-field.git"
+    "url": "git+https://github.com/quixomatic/tag-field.git"
   },
   "keywords": [
     "component",
     "ServiceNow",
-    "fa-icon"
+    "tag-field"
   ],
   "author": "James Freund",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NowComponents/tag-fieldissues"
+    "url": "https://github.com/quixomatic/tag-fieldissues"
   },
-  "homepage": "https://github.com/NowComponents/tag-field#readme"
+  "homepage": "https://github.com/quixomatic/tag-field#readme"
 }
