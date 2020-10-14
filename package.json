@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Quixomatic/fa-icon-source.git"
+    "url": "git+https://github.com/NowComponents/tag-field.git"
   },
   "keywords": [
     "component",
@@ -39,7 +39,7 @@
   "author": "James Freund",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Quixomatic/fa-icon-source/issues"
+    "url": "https://github.com/NowComponents/tag-fieldissues"
   },
-  "homepage": "https://github.com/Quixomatic/fa-icon-source#readme"
+  "homepage": "https://github.com/NowComponents/tag-field#readme"
 }

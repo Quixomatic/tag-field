@@ -18,7 +18,7 @@ createCustomElement('x-saw-tag-field', {
 			default: null,
 		},
 		tags: {
-			default: [{ value: 'Test 1' }, { value: 'Othing Thing' }],
+			default: [{ value: 'Tag 1' }, { value: 'Othing Tag' }],
 		},
 		inputValue: {
 			default: null,

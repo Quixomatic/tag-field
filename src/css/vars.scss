@@ -1,23 +1,9 @@
 $itemHeight: 40px;
-$headerHeight: 40px;
-$base-shadow: 0 1px 15px 1px rgba(113, 106, 202, .08);
 
-$swBackground: #f7f8fa;
-$swDarkBlue: #212a43;
 $swLightBlue: #63b5e5;
 $swBrightRed: #e25733;
-$swBrightYellow: #f9c513;
-$swBrightOrange: #fc8a3d;
-$swBrightGreen: #6edb8f;
-$swBrightPurple: #5c71f0;
 $swHighlightBlue: mix($swLightBlue, white, 5);
 $swHighlightRed: mix($swBrightRed, white, 7);
-$swHighlightGreen: mix($swBrightGreen, white, 10);
-$swHighlightPurple: mix($swBrightPurple, white, 10);
-$swHighlightGray: #e8eaec;
-$swLowlightGray: #e0e3ea;
-$swLowlightGreen: mix(black, $swBrightGreen, 25);
-$swDarkGray: #788090;
 
 @function top-shadow ($depth) {
     $primary-offset: nth(.5 1.5 3 10 14 19, $depth) * 1px;

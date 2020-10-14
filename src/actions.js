@@ -57,10 +57,10 @@ export default {
 			const { payload } = action;
 			const { value } = payload;
 
-			const existingIndex = tags.map(tag => tag.value).indexOf(value);
+			const existingIndex = tags.map((tag) => tag.value).indexOf(value);
 			const tempObj = {
 				value,
-			}
+			};
 
 			if (existingIndex !== -1) {
 				dispatch('CLEAR_INPUT_VALUE');
@@ -81,8 +81,8 @@ export default {
 			const { payload } = action;
 			const { value } = payload;
 
-			const existingIndex = tags.map(tag => tag.value).indexOf(value);
-			
+			const existingIndex = tags.map((tag) => tag.value).indexOf(value);
+
 			if (existingIndex === -1) {
 				return;
 			}

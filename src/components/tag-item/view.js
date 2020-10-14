@@ -1,5 +1,3 @@
-import snabbdom, { Fragment } from '@servicenow/ui-renderer-snabbdom';
-
 import { getIcon } from '../../utils/getIcon';
 import { faTimes } from '../../svg/faTimes';
 
