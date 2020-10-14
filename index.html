@@ -9,6 +9,10 @@
 
 <body>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         .demo-container {
             position: fixed;
             top: 0;
@@ -44,10 +48,13 @@
             display: flex;
             flex-flow: row nowrap;
             align-items: center;
+            width: 100%;
+            padding: 0 10px;
         }
         
         .demo-container > .container-inner > .inner-body {
             height: 300px;
+            width: 100%;
         }
     </style>
     <div class="demo-container">
