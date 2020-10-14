@@ -29,16 +29,35 @@
             border-bottom-width: 2px;
             width: 100%;
             max-width: 700px;
-            height: 300px;
             display: flex;
             flex-flow: column nowrap;
             align-items: center;
             justify-content: center;
         }
+        
+        .demo-container > .container-inner > .inner-header {
+            height: 40px;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+        }
+        
+        .demo-container > .container-inner > .inner-body {
+            height: 300px;
+        }
     </style>
     <div class="demo-container">
         <div class="container-inner">
-            <x-saw-tag-field></x-saw-tag-field>
+            <div class="inner-header">
+                <span>Demo Container - @nowcomponents/tag-field</span>
+            </div>
+            <div class="inner-body">
+                <x-saw-tag-field></x-saw-tag-field>                
+            </div>
         </div>
     </div>
 </body>
